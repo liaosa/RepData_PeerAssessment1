@@ -71,12 +71,12 @@ ggplot(aggdf3, aes(interval, steps, group = weekend,col=weekend)) +
   ylab("Everage Number of Steps")+
   geom_point(size = 2) +
   geom_line()+
-  ggtitle("Evearge MNumber of Steps")
+  ggtitle("Everage Number of Steps")
 
 #using plot function
 layout(1:2)
-plot.ts(aggdf3[aggdf3$weekend=="weekday","interval"],aggdf3[aggdf3$weekend=="weekday","steps"],type="l",xlab="interval in Weekday", ylab="Average Steps")
-plot.ts(aggdf3[aggdf3$weekend=="weekend","interval"],aggdf3[aggdf3$weekend=="weekend","steps"],type="l",xlab="interval in Weekend", ylab="Average Steps")
+plot.ts(aggdf3[aggdf3$weekend=="weekday","interval"],aggdf3[aggdf3$weekend=="weekday","steps"],type="l",xlab="Interval in Weekday", ylab="Average Steps")
+plot.ts(aggdf3[aggdf3$weekend=="weekend","interval"],aggdf3[aggdf3$weekend=="weekend","steps"],type="l",xlab="Interval in Weekend", ylab="Average Steps")
 ```
 
 
