@@ -1,5 +1,8 @@
 ---
 title: "Rmarkdown file for RR Project 1"
+output:
+  html_document:
+    keep_md: yes
 ---
 
 ## Set options
@@ -41,21 +44,21 @@ The time series plot shows the very high peak around 800 ~ 1000 5-minitues inter
 ### Imputing missing values
 
 ```{r}
-(sum(is.na(df$steps)))
+sum(is.na(df$steps))
 df2<-df
 for (itv in unique(df2[is.na(df2$steps),"interval"])){
   #df[df$interval==itv,"steps"]
   df2[df2$interval==itv & is.na(df2$steps),"steps"]<-floor(mean(df2[df2$interval==itv,"steps"],na.rm=T))
   }
 (sum(is.na(df2$steps)))
-
 aggdf2<-aggregate(steps~date,data=df2,FUN=sum,na.rm=T, na.action = na.omit)
 par(mfrow=c(2,1))
-hist(aggdf$steps,25,main="Total No. of Steps per Day",xlab="Steps")
-hist(aggdf2$steps,25,main="Total No. of Steps per Day (Imputed Data)",xlab="Steps")
+hist(aggdf$steps,main="Total No. of Steps per Day",xlab="Steps")
+hist(aggdf2$steps,main="Total No. of Steps per Day (Imputed Data)",xlab="Steps")
 (summary(aggdf$steps))
 (summary(aggdf2$steps))
 ```
+
 
 There are slightly decreases in both mean (10770 vs 10750) and median (10760 vs 010640) after impuation, while the pattern of the histogram still keeps.
 
